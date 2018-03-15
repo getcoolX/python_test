@@ -1,0 +1,80 @@
+# /usr/bin/python
+# -*- coding: utf-8  -*-
+bussi_card_sys = []
+# 1.打印提示
+#
+flag = True
+while flag:
+    print(' ')
+    print('=' * 50)
+    print('business card control system'.center(50))
+    print('='*50)
+    print(' * 1. add a new name'.title())
+    print(' * 2. del a name'.title())
+    print(' * 3. remodify a bussi_card'.title())
+    print(' * 4. find a bussi_card'.title())
+    print(' * 5. display bussi_card_info'.title())
+    print(' * 6. exit this sys'.title())
+    print('='*50)
+
+# 2.获取用户输入
+    chioce = int(raw_input('plz input your choice: '))
+
+# 3.根据用户输入，进行相应操作
+
+    while chioce == 1:
+        print('plz input new_name:')
+        val = raw_input()
+        if val.isalnum():
+            bussi_card_sys.append(val)
+            print('add success!'.title().center(50))
+            break
+            # flag = False
+        else:
+            print('input_text err, plz re_input')
+        break
+
+
+    while chioce == 2:
+        print('plz input the name you want to del:')
+        val = raw_input()
+        bussi_card_sys.remove(val)
+        print('del success!'.title().center(50))
+        break
+
+    while chioce == 3:
+        print('plz input the name you want to redmodifine')
+        val = raw_input()
+        if bussi_card_sys.__contains__(val):
+            val_new = raw_input('now plz input new info:')
+            index = bussi_card_sys.index(val)
+            bussi_card_sys[index] = val_new
+            print('remodify seccess!'.title().center(50))
+            break
+        else:
+            print('sorry,no such man!'.capitalize().center(50))
+
+
+    while chioce == 4:
+        print('plz input the name you want to seek:')
+        val = raw_input()
+        if bussi_card_sys.__contains__(val):       # if name in names   也可以使用
+            index = bussi_card_sys.index(val)
+            print(val + 'has been in this sys.' + 'thanks for your using! '.capitalize() + val.title() + ' was in ' + str(index) + ' of the sys.')
+            break
+        else:
+            print('opps, no such man!'.capitalize().center(50))
+
+    while chioce == 5:
+        print(' ')
+        for item in bussi_card_sys:
+            print(item)
+        # print(bussi_card_sys)
+        break
+
+
+    while chioce == 6:
+        flag = False
+        print('Exit Success!'.center(50))
+
+        break
