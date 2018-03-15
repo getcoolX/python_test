@@ -1,8 +1,9 @@
 # /usr/bin/python
 # -*- coding: utf-8  -*-
+
 bussi_card_sys = []
 # 1.打印提示
-#
+
 flag = True
 while flag:
     print(' ')
@@ -71,7 +72,6 @@ while flag:
             print(item)
         # print(bussi_card_sys)
         break
-
 
     while chioce == 6:
         flag = False
