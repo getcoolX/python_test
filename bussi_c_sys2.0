@@ -29,7 +29,7 @@ while flag:
             print(' --------添 加 成 功-------- !'.center(20))
             print(' ')
 
-        if choice == 2:
+        elif choice == 2:
             name = raw_input('请输入要删除名片的名字：')
             if dic.has_key(name):
                 del dic[name]
@@ -39,7 +39,7 @@ while flag:
                 print('--------查 无 此 人 ，删 除 失 败-------- ！'.center(20))
                 print(' ')
 
-        if choice == 3:
+        elif choice == 3:
             name = raw_input('请输入要查找人姓名：')
             if dic.has_key(name):
                 print('姓名：' + name + ', 电话：' + dic[name])
@@ -48,7 +48,7 @@ while flag:
                 print(' --------查 无 此 人--------！'.center(40))
                 print(' ')
 
-        if choice == 4:
+        elif choice == 4:
             name = raw_input('请输入您要更改的名字：')
             if dic.has_key(name):
                 del dic[name]
@@ -58,13 +58,13 @@ while flag:
                 print('--------更 新 成 功-------- ！'.center(20))
                 print(' ')
 
-        if choice == 5:
+        elif choice == 5:
             for key,value in dic.items():
                 print(' 姓名: ' + key),
                 print(' , 电话: ' + value)
                 print(' ')
 
-        if choice == 6:
+        elif choice == 6:
             print('  感 谢 使 用 名 片 管 理 系 统 ，再 见 ！'.center(30))
             flag = False
 
