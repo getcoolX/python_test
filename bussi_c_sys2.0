@@ -1,0 +1,73 @@
+# /usr/bin/python
+# -*- coding: utf-8  -*-
+
+# 名片管理系统 2.0
+
+dic = {}
+flag = True
+choi = ['1','2','3','4','5','6']
+while flag:
+    print('='*50)
+    print('名片管理系统2.0'.center(50))
+    print('='*50)
+    print(' *1. 添 加 一 个 名 片'.center(20))
+    print(' *2. 删 除 一 个 名 片'.center(20))
+    print(' *3. 查 找 一 张 名 片'.center(20))
+    print(' *4. 更 改 一 张 名 片'.center(20))
+    print(' *5. 显 示 所 有 名 片'.center(20))
+    print(' *6. 退 出 名 片 系 统'.center(20))
+    print('='*50)
+
+    choice = (raw_input('请输入您的选择：'))
+
+    if choice in choi:
+        choice = int(choice)
+        if choice == 1:
+            name = raw_input('请输入姓名：')
+            tel = raw_input('请输入电话：')
+            dic[name] = tel
+            print(' --------添 加 成 功-------- !'.center(20))
+            print(' ')
+
+        if choice == 2:
+            name = raw_input('请输入要删除名片的名字：')
+            if dic.has_key(name):
+                del dic[name]
+                print(' -----------删 除 成 功----------- ！'.center(20))
+                print(' ')
+            else:
+                print('--------查 无 此 人 ，删 除 失 败-------- ！'.center(20))
+                print(' ')
+
+        if choice == 3:
+            name = raw_input('请输入要查找人姓名：')
+            if dic.has_key(name):
+                print('姓名：' + name + ', 电话：' + dic[name])
+                print(' ')
+            else:
+                print(' --------查 无 此 人--------！'.center(40))
+                print(' ')
+
+        if choice == 4:
+            name = raw_input('请输入您要更改的名字：')
+            if dic.has_key(name):
+                del dic[name]
+                name = raw_input('请输入更新后的名字：')
+                tel = raw_input('请输入更新后的电话：')
+                dic[name] = tel
+                print('--------更 新 成 功-------- ！'.center(20))
+                print(' ')
+
+        if choice == 5:
+            for key,value in dic.items():
+                print(' 姓名: ' + key),
+                print(' , 电话: ' + value)
+                print(' ')
+
+        if choice == 6:
+            print('  感 谢 使 用 名 片 管 理 系 统 ，再 见 ！'.center(30))
+            flag = False
+
+
+    else:
+        print(' --------输 入 有 误 ，请 重 新 输 入！--------'.center(50))
