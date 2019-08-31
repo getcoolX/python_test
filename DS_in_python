@@ -1,0 +1,65 @@
+#encoding=utf-8
+
+class Node(object):
+	'''结点类'''
+
+
+	def __init__(self, data, p=0):
+		'''初始化结点'''
+		self.data = data
+		self.next = p
+
+
+class listNode(object):
+	'''建立单链表'''
+
+	def __init__(self):
+		'''类初始化'''
+		self.head = None
+
+
+	def creatListNode(self, data):
+		'''建立单链表'''
+		self.head = Node(data[0]) 
+		'''获取存储在data[0]中的值，并将其存储在形参head中，
+		   然后将该变量关联到当前创建的实例，此时self.head
+		   实际为类Node的实例，此处为将实例用作属性'''
+		p = self.head
+		print type(p)
+		for item in data[1:]:
+			node = Node(item)
+			p.next = node     
+			'''将实例 Node（item）用作属性'''
+			p = p.next
+			#print type(node)
+
+
+
+	def printList(self):
+		'''打印链表'''
+		p = self.head
+		while p:
+			print p.data
+			p = p.next
+
+	def deleteLinkLisk(self):
+		'''删除链表'''
+		p = self.head
+		while p:
+			p.next = None
+			p = p.next
+		while p:
+			p = None
+
+
+
+
+
+data = [3,5,1,9,8,'sa']
+test = listNode()
+test.creatListNode(data)
+test.printList()
+print type(test)
+test.deleteLinkLisk()
+test.printList()
+
