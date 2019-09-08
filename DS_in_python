@@ -1,65 +1,154 @@
-#encoding=utf-8
+# encoding=utf-8
 
 class Node(object):
-	'''结点类'''
 
 
 	def __init__(self, data, p=0):
-		'''初始化结点'''
 		self.data = data
 		self.next = p
 
 
-class listNode(object):
-	'''建立单链表'''
+
+class ListNode(object):
+
 
 	def __init__(self):
-		'''类初始化'''
 		self.head = None
 
 
-	def creatListNode(self, data):
-		'''建立单链表'''
-		self.head = Node(data[0]) 
-		'''获取存储在data[0]中的值，并将其存储在形参head中，
-		   然后将该变量关联到当前创建的实例，此时self.head
-		   实际为类Node的实例，此处为将实例用作属性'''
+	def CreatListNode(self, data):
+		'''创建链表'''
+		self.head = Node(data[0])
 		p = self.head
-		print type(p)
 		for item in data[1:]:
 			node = Node(item)
-			p.next = node     
-			'''将实例 Node（item）用作属性'''
+			p.next = node
 			p = p.next
-			#print type(node)
 
-
-
-	def printList(self):
-		'''打印链表'''
+	def GetLength(self):
+		'''获得链表长度'''
+		length = 0
 		p = self.head
 		while p:
-			print p.data
+			length += 1
 			p = p.next
+		return length
 
-	def deleteLinkLisk(self):
-		'''删除链表'''
+
+	def FindItem(self, x):
+		'''查找链表中元素，如果找到则返回其位置'''
+		p = self.head
+		count = 0
+		while p:
+			if p.data == x:
+				print ('\nFind success! Location: ' + str(count))
+				p = p.next
+				count += 1
+			else:
+				p = p.next
+				count += 1
+				print('\nThis time failed!')
+
+
+	def DT(self, x):
+		'''only for test in DELETE'''
+		p = self.head
+		q = p.next
+		if p.data == x:
+			self.head = q
+			print('Delete Success!')
+		elif p.data != x:
+			while q:
+				if q.data == x:
+					q = q.next
+					p.next = q
+					print("DT SUCCESS! ")
+					#break
+				else:
+					p = p.next
+					q = q.next
+	
+
+	def Judge(self, x):
+		'''判断元素位置是否合法'''
+		length = self.GetLength()
+		if x < 0 or x > length-1:
+			print('Index ERR! ')
+			return False
+		else:
+			return True				
+	
+
+	def Increase(self, x, v):
+		'''增加一个元素，x为位置'''
+		length = self.GetLength()
+		count = 0
+		p = self.head
+		if x < 0 or x > length-1:
+			print('Insert Index Error! ')
+		else:
+			while x != count:
+				count += 1
+				p = p.next
+			q = Node(v)
+			if x != 0:
+				q.next = p.next
+				p.next = q
+			else:
+				q.next = p
+				self.head = q
+
+
+	def Update(self, x, v):
+		'''更新某个位置的元素值'''
+		flag = self.Judge(x)
+		index = 0
+		p = self.head
+		if flag:
+			while index != x:
+				index += 1
+				p = p.next
+			p.data = v
+
+
+	def getLength(self):
+		'''获得链表长度'''
+		p = self.head
+		count = 0
+		while p:
+			count += 1
+			p = p.next
+		length = count
+		print('\nLength is ' + str(length))
+
+
+	def PrintList(self):
+		'''打印输出链表'''
 		p = self.head
 		while p:
-			p.next = None
+			print p.data,
 			p = p.next
-		while p:
-			p = None
+		print('\n')
+
+	def Delete(self):
+		'''删除整个链表'''
+		self.head = None
+		self.length = 0
 
 
 
-
-
-data = [3,5,1,9,8,'sa']
-test = listNode()
-test.creatListNode(data)
-test.printList()
-print type(test)
-test.deleteLinkLisk()
-test.printList()
-
+a = [3,6,9,2,5,6,6,6,6]
+t1 = ListNode()
+t1.CreatListNode(a)
+t1.PrintList()
+t1.getLength()
+t1.FindItem(6)
+t1.Increase(0,11)
+t1.PrintList()
+t1.Update(-1,232)
+# t1.DeleteOne(5)
+# t1.DeleteItem(2)
+#t1.DT(0)
+t1.PrintList()
+t1.Delete()
+t1.PrintList()
